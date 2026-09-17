@@ -1,0 +1,37 @@
+{
+  "name": "roundtable-seminar",
+  "version": "3.2.1-rc",
+  "description": "Roundtable Seminar: a general-purpose cognitive operating system for complex problems. It discovers the real question first, routes to the most valuable cognitive operation, exposes real disagreements, verifies key facts, eliminates weak explanations, and converges on the current best judgment.",
+  "author": {
+    "name": "Condiwus",
+    "url": "https://github.com/Condiwus"
+  },
+  "homepage": "https://github.com/Condiwus/roundtable-seminar",
+  "repository": "https://github.com/Condiwus/roundtable-seminar",
+  "license": "MIT",
+  "keywords": [
+    "reasoning",
+    "decision-making",
+    "brainstorming",
+    "dialectic",
+    "truth-seeking",
+    "problem-solving"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Roundtable Seminar",
+    "shortDescription": "Find the most believable, most actionable answer with minimal necessary cognitive complexity.",
+    "longDescription": "Roundtable Seminar is not a panel of celebrities taking turns giving opinions. It is a cognitive operating system that first discovers what the question really needs, then routes to Direct / Brainstorm / Dialectic / Reasoning / Search / Ask / Calculate / Experiment / Act / Stop, and stops when further thinking is worth less than acting on reality.",
+    "developerName": "Condiwus",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "websiteURL": "https://github.com/Condiwus/roundtable-seminar",
+    "defaultPrompt": [
+      "Start a roundtable discussion about this problem.",
+      "Use roundtable seminar to find the strongest counterargument to my plan.",
+      "Run a roundtable on whether I should act now or wait for more information."
+    ]
+  }
+}

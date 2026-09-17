@@ -1,0 +1,20 @@
+{
+  "name": "roundtable-seminar",
+  "interface": {
+    "displayName": "Roundtable Seminar"
+  },
+  "plugins": [
+    {
+      "name": "roundtable-seminar",
+      "source": {
+        "source": "local",
+        "path": "./plugins/roundtable-seminar"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "NOT_AVAILABLE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
