@@ -1,0 +1,52 @@
+{
+  "release": "3.2.1-rc",
+  "checked_on": "2026-09-17",
+  "source_conversation_id": "6aab7232-64fc-83ea-9d5a-50ddece4de2b",
+  "scope": "runtime documents and package references; archived instructions are excluded from runtime semantic review",
+  "required_files_present": true,
+  "local_links_checked": 41,
+  "skill_validator": {
+    "exit_code": 0,
+    "output": "Skill is valid!"
+  },
+  "legacy": [
+    {
+      "version": "3.0",
+      "source_attachment": "Roundtable-Seminar-v3.0.md",
+      "destination": "legacy/v3.0/Roundtable-Seminar-v3.0.md",
+      "bytes": 24088,
+      "sha256": "be0aef8376c2fd13ad61e27bb6e25cb36963fd83e5c21f93c4caaa7781d6e4b9",
+      "byte_identical": true
+    },
+    {
+      "version": "3.1",
+      "source_attachment": "Roundtable-Seminar-v3.1.md",
+      "destination": "legacy/v3.1/Roundtable-Seminar-v3.1.md",
+      "bytes": 15713,
+      "sha256": "25162bd1f973dafdffb7a7ac7ffa50a2f47923fc0d0af7835b1b719bac39b6db",
+      "byte_identical": true
+    },
+    {
+      "version": "3.2",
+      "source_attachment": "Roundtable-Seminar-v3.2.md",
+      "destination": "legacy/v3.2/Roundtable-Seminar-v3.2.md",
+      "bytes": 34617,
+      "sha256": "05780ccd254d1673c8ea520d45aca7cac89571da89056cdd9de06752ac957a6f",
+      "byte_identical": true
+    }
+  ],
+  "errors": [],
+  "status": "PASS",
+  "rc_baselines": [
+    {
+      "file": "review/baseline/SKILL.md",
+      "matches_conversation_artifact": true,
+      "sha256": "a34854d56086d930e6c06510e3ca456381ce0cdadb9fa580228fb8b27ee55a91"
+    },
+    {
+      "file": "review/baseline/brainstorm-engine.md",
+      "matches_conversation_artifact": true,
+      "sha256": "a6619f555d9b111cdd28447b0a158acfff94bf441fad3c9e2b1233c78a9032ee"
+    }
+  ]
+}

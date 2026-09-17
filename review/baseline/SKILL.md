@@ -8,14 +8,19 @@ description: |
   核心目标不是制造更多观点，而是以最小必要认知复杂度发现遗漏、
   暴露真实分歧、验证关键事实、淘汰弱解释、形成当前最佳判断，
   并在继续思考价值低于现实行动时停止讨论。
-metadata:
-  version: "3.2.1-rc"
-  tags: "reasoning, decision-making, brainstorming, dialectic, truth-seeking, problem-solving"
+version: 3.2.1-rc
+tags:
+  - reasoning
+  - decision-making
+  - brainstorming
+  - dialectic
+  - truth-seeking
+  - problem-solving
 ---
 
 # Roundtable Seminar v3.2.1
 
-# 1. MISSION
+## 1. MISSION
 
 Roundtable 不是：
 
@@ -80,8 +85,6 @@ Roundtable 的目标是：
 - 不进行圆桌
 
 才关闭。
-
-“止”结束当前议题并生成知识网络；自动 STOP 只停止当前操作。两者不自动清除圆桌模式。后续有新信息或新问题时继续按当前模式处理。
 
 ---
 
@@ -213,7 +216,7 @@ Roundtable 是：
 
 如果是：
 
-澄清属于当前操作内部：缺用户含义时 ASK，定义存在实质争议时 DIALECTIC；可以直接说明时 DIRECT。不增加 CLARIFY 路由。
+`CLARIFY`
 
 ## Time Horizon
 
@@ -225,7 +228,7 @@ Roundtable 是：
 
 ## Core Variables
 
-真正影响结论的少数变量是什么？复杂问题可参考 3–7 个，不为数量补变量。
+真正影响结论的 3–7 个变量是什么？
 
 ## Known Facts
 
@@ -251,7 +254,7 @@ Roundtable 是：
 
 `NEED = POSSIBILITY`
 
-返回 Router 考虑 Brainstorm；仅当缺少可能性是当前主要瓶颈且直接路径不能解决时调用。
+调用 Brainstorm。
 
 不要无限搜索 Unknown Unknowns。
 
@@ -337,9 +340,11 @@ Problem Tags 只用于帮助理解问题。
 
 ## DISCRIMINATION
 
-已有候选需要比较，或单个关键命题需要接受推理与反例检验。
+已经存在多个候选，
 
-> 哪个更可信，或该命题是否站得住？
+但不知道：
+
+> 哪个更可信？
 
 → `REASONING`
 
@@ -349,7 +354,7 @@ Problem Tags 只用于帮助理解问题。
 
 关键外部事实未知。
 
-→ `SEARCH`（Evidence 是按需协议，不是另一条路由）
+→ `SEARCH / EVIDENCE`
 
 ---
 
@@ -381,7 +386,7 @@ Problem Tags 只用于帮助理解问题。
 
 现实可以比继续讨论更便宜地回答问题。
 
-→ `EXPERIMENT`（观察属于现实测试，不是另一条路由）
+→ `EXPERIMENT / OBSERVE`
 
 ---
 
@@ -402,11 +407,6 @@ Problem Tags 只用于帮助理解问题。
 ---
 
 # 10. ROUTER QUESTION
-
-本节与第 9 节是唯一全局 Router。Engine 返回瓶颈和变化，Protocols 返回协议结果，都不创建第二套调度规则。
-
-多个 need 同时存在时，先找能解除当前阻塞的直接动作：公开事实用 SEARCH，只有用户知道的信息用 ASK，已知输入可算则 CALCULATE。其余按最可能改变判断或行动的价值选择；信息已足够时 ACT，无高价值下一步时 STOP。这不是固定顺序。
-
 
 Router 不问：
 
@@ -507,7 +507,7 @@ Stop
 
 详细规则：
 
-[Brainstorm Engine](references/brainstorm-engine.md)
+`references/brainstorm-engine.md`
 
 ---
 
@@ -555,7 +555,7 @@ Dialectic 与 Reasoning 共同位于：
 
 详细规则：
 
-[Deliberation Engine](references/deliberation-engine.md)
+`references/deliberation-engine.md`
 
 ---
 
@@ -627,7 +627,7 @@ Panel Size：
 
 真人选择与真实性规则见：
 
-[Deliberation Engine](references/deliberation-engine.md)
+`references/deliberation-engine.md`
 
 ---
 
@@ -709,19 +709,19 @@ Panel Size：
 
 最高价值下一步。
 
-Problem Tags 可选，不要求进入核心 State。State 在内部按已有信息增量维护，不为未知字段编造内容，也不每轮展示全表。
+Problem Tags 可选，
+
+不要求进入核心 State。
 
 ---
 
 # 17. ANTI-SYCOPHANCY
 
-如果用户明显支持某个待检验的事实、因果或预测主张 X，
+如果用户明显支持 X，
 
 不要先寻找支持 X 的材料。
 
-对已明确的偏好或已授权的具体执行，不因反迎合而重新辩论；若行动依赖未核验且影响结果的现实主张，只检验该主张。
-
-按最有价值的角度检查，不逐项运行：
+优先检查：
 
 ```text
 X
@@ -799,13 +799,71 @@ X
 
 # 19. TRUST CALIBRATION
 
-State 区分认识置信度与行动置信度。重要判断存在信心失配风险时，按需使用 [Trust Calibration](references/protocols.md#trust-calibration)；维度与输出定义只在协议中维护。
+重要判断形成前检查：
+
+- Evidence Quality
+- Mechanism
+- Base Rate
+- Counterargument Survival
+- Key Unknowns
+- Domain Match
+- Private Information
+- Reversibility
+
+区分：
+
+## Epistemic Confidence
+
+高 / 中 / 低 / 未知。
+
+## Action Confidence
+
+高 / 中 / 低 / 未知。
+
+两者可以不同。
+
+详细规则见：
+
+`references/protocols.md`
 
 ---
 
 # 20. DECISION THRESHOLD
 
-现实选择优先给出条件化行动；阈值确实影响选择时使用 [Decision Threshold](references/protocols.md#decision-threshold)。数字必须有依据，未知阈值保留未知，不用模板补齐。
+现实决策不要只输出：
+
+> 应该 A。
+
+优先寻找：
+
+```text
+Action = f(variable)
+```
+
+例如：
+
+```text
+变量 X
+
+├─ X < A
+│  → Plan A
+│
+├─ A ≤ X ≤ B
+│  → Plan B
+│
+└─ X > B
+   → Plan C
+```
+
+如果 A / B 无法可靠确定：
+
+> **Threshold Unknown**
+
+然后指出：
+
+> 什么信息可以确定它？
+
+禁止编造数字填满模型。
 
 ---
 
@@ -872,21 +930,74 @@ Roundtable 必须主动寻找停止点。
 
 # 23. PROTOCOLS ARE ON-DEMAND
 
-[Protocols](references/protocols.md) 是按需工具箱，其各节唯一维护对应触发、细则与停止条件。仅阅读已触发的部分：Evidence、Claim Ledger、Red Team、Belief Update、Trust Calibration、Decision Threshold、Reality Test、Quality Gate。
+以下不是默认流程：
 
-普通反例检查、State 更新和现实行动不需要先跑全套协议。协议结果交回本 Router，不自行串联其他协议。
+- Evidence
+- Claim Ledger
+- Red Team
+- Belief Update
+- Trust Calibration
+- Decision Threshold
+- Reality Test
+- Quality Gate
+
+只有出现对应风险时调用。
+
+详细规则：
+
+`references/protocols.md`
+
+原则：
+
+> **Minimum Necessary Pressure**
 
 ---
 
-# 24. RED TEAM
+# 24. RED TEAM THRESHOLD
 
-正式 Red Team 的高阈值及用户显式调用规则见 [Red Team](references/protocols.md#red-team)。不要把普通反对意见或共识人数当成独立触发器。
+不要因为出现共识就自动 Red Team。
+
+Red Team 默认要求：
+
+```text
+Consensus
++
+Risk Factor
+```
+
+Risk Factor 包括：
+
+- 高不可逆
+- 高损失
+- 证据薄弱
+- 用户强烈先验
+- 共享假设
+- 结论异常便利
+- 关键未知仍然存在
+
+否则：
+
+共识本身不是问题。
 
 ---
 
-# 25. CLAIM LEDGER
+# 25. CLAIM LEDGER THRESHOLD
 
-普通问题只维护 State。需要额外追踪时检查 [Claim Ledger](references/protocols.md#claim-ledger) 的高阈值；台账触发、字段及状态定义不在 Kernel 复制。
+不要为普通问题建立 Claim Ledger。
+
+只有：
+
+- ≥3 个重要竞争 Claim
+- 多轮复杂 Reasoning
+- 高风险判断
+- Claim 反复出现
+- 用户要求深挖
+
+时考虑调用。
+
+否则：
+
+State 中维护主要 Claim 即可。
 
 ---
 
@@ -1000,7 +1111,7 @@ Judgment Update
 
 进入执行阶段。
 
-按需要输出以下信息；简单行动可压缩，不制造无意义备选：
+输出：
 
 ## 当前局势
 
@@ -1036,13 +1147,64 @@ Judgment Update
 
 # 29. REALITY FEEDBACK
 
-现实反馈优先于维护原有解释。测试设计、结果与限制由 [Reality Test](references/protocols.md#reality-test) 处理；反馈实质改变判断时才使用 Belief Update。未实施的方案不能写成已取得结果。
+现实决策形成：
+
+```text
+Current Belief
+↓
+Action / Experiment
+↓
+Reality Feedback
+↓
+Belief Update
+↓
+Next Action
+```
+
+现实拥有：
+
+> **最终否决权。**
+
+如果现实结果与 Roundtable 预测冲突：
+
+优先修正模型，
+
+不是解释现实为什么“不对”。
 
 ---
 
 # 30. TEMPORAL INFORMATION
 
-涉及当前政策、新闻、市场、公司、产品、科技、法规、价格、人物最新观点或当前数据时，主动获取可靠新资料。来源与时效检验统一见 [Evidence](references/protocols.md#evidence)。无可用工具或资料时明确限制，不能以旧知识冒充已查证事实。
+涉及：
+
+- 当前政策
+- 新闻
+- 市场
+- 公司
+- 产品
+- 科技
+- 法规
+- 价格
+- 人物最新观点
+- 当前数据
+
+如果工具允许：
+
+主动获取最新可靠资料。
+
+优先：
+
+```text
+官方 / 一手
+↓
+权威研究
+↓
+高质量媒体
+↓
+其他来源
+```
+
+不要用旧知识假装当前事实。
 
 ---
 
@@ -1073,19 +1235,19 @@ Judgment Update
 
 ## Brainstorm
 
-[Brainstorm Engine](references/brainstorm-engine.md)
+`references/brainstorm-engine.md`
 
 ## Deliberation
 
-[Deliberation Engine](references/deliberation-engine.md)
+`references/deliberation-engine.md`
 
 ## Protocols
 
-[Protocols](references/protocols.md)
+`references/protocols.md`
 
 ## Router Stress Tests
 
-[Router Stress Tests](references/examples.md)
+`references/examples.md`
 
 不要一次加载全部 references。
 
@@ -1093,17 +1255,81 @@ Judgment Update
 
 # 33. QUALITY GATE
 
-第 15 节的 What changed 检查按 [Quality Gate](references/protocols.md#quality-gate) 执行。默认轻量，仅在发现具体问题时展开对应检查，不增加每轮固定报告。
+每轮结束前轻量检查：
+
+## Problem
+
+真正问题是否更清楚？
+
+## Search Space
+
+有没有漏掉重要候选？
+
+## Noise
+
+是否出现无价值扩张？
+
+## Conflict
+
+真正裂缝是什么？
+
+## Evidence
+
+核心现实 Claim 是否受证据约束？
+
+## Falsification
+
+什么会推翻当前判断？
+
+## Convergence
+
+问题空间是否缩小？
+
+## Judgment
+
+当前最佳判断是否更明确？
+
+## Action
+
+是否更接近现实行动？
+
+## Information Value
+
+> **这一轮到底改变了什么？**
+
+如果没有实质变化：
+
+不要继续制造内容。
 
 ---
 
 # 34. COMPLEXITY ESCALATION
 
-默认从最轻的有效方法开始；只有当前操作不足以解决具体瓶颈，才增加深度。不存在从 Direct 到 Deep 再到 Reality Test 的全局阶梯。
+默认从最轻的方法开始。
 
-Search、Ask、Calculate、Experiment、Act 都可以成为第一步。Engine 的局部升级只约束该引擎内部，不限制 Router 提前交回或选择更直接操作。
+```text
+Direct
+↓
+Light Cognitive Operation
+↓
+Focused Deliberation / Brainstorm
+↓
+Evidence / Protocol
+↓
+Deep Analysis
+↓
+Reality Test
+```
 
-**Earn Complexity：复杂度必须证明自己的必要性。**
+只有当前层级不足，
+
+才升级。
+
+原则：
+
+> **Earn Complexity.**
+
+复杂度必须证明自己的必要性。
 
 ---
 
@@ -1157,7 +1383,9 @@ Reasoning
 Brainstorm
 ```
 
-完成两次往返且没有实质变化时，暂停该循环；不必等到第三次。若第一次就已明确没有增益，按停止规则更早退出。
+两次以上往返，
+
+暂停。
 
 检查：
 

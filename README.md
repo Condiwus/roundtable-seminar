@@ -1,133 +1,67 @@
-# roundtable-seminar · 圆桌研讨会
+# Roundtable Seminar v3.2.1 Release Candidate
 
-> 你问 AI 一个难题，它给你一个答案、一个角度。
-> 圆桌研讨会把它变成一场以「求真」为目标的认知操作：先判断这个问题到底需要什么，再决定谁来回答、回答完留下什么。
+以最小必要认知复杂度，找到当前最值得相信、最值得行动的答案。
 
-**v3.2 — 通用认知操作系统**
+本项目承接「优化圆桌提示词」对话中已接受的 RC 架构与 Red Team 修改。保留已修订 Kernel、Brainstorm 的方案，完成 Deliberation、Protocols、Examples 的对齐，并归档 v3.0 / v3.1 / v3.2 原始附件。
 
----
+## 项目结构
 
-## 这不是什么
-
-不是「邀请几个名人轮流发表观点」。
-
-不是「永远给你更多角度」——更多角度本身可能只是噪声。
-
-不是「让用户觉得自己是对的」，也不是「让你觉得圆桌很聪明」。
-
-## 这是什么
-
-一套用圆桌讨论作为交互界面的通用认知操作系统。核心原则只有一条：
-
-> **求真 > 判断质量 > 共识 > 讨好用户。**
-
-好的讨论不是产生越来越多观点，而是**经过讨论以后，越来越少的观点还能活下来**。
-
----
-
-## 它和其他「多角度分析」的区别
-
-| | 常见做法 | 圆桌研讨会 v3.2 |
-|---|---|---|
-| 先做什么 | 直接找几个名人开始辩论 | 先判断这个问题**该不该讨论**（有些问题需要查证、计算、实验，或其实已经可以直接行动） |
-| 怎么分类 | 一般不分类 | PROBLEM ROUTER 路由到 FACT / CAUSAL / FORECAST / DECISION / BELIEF / CREATIVE / VALUE / MIXED |
-| 怎么选人 | 从名人库挑 | 先定 **Cognitive Seats**（需要哪些认知能力），再匹配真实人物；证据不足时改用匿名认知角色 |
-| 观点怎么处理 | 都留着 | **CLAIM LEDGER** 维护竞争命题：ACTIVE / WEAKENED / FALSIFIED / UNRESOLVED / DEPENDENT |
-| 会不会集体跑偏 | 靠感觉 | 触发条件明确时启动 **Red Team**，任务就是证明整个圆桌可能集体错了 |
-| 置信度 | 「信心：高」 | 拆成**认识置信度**与**行动置信度**，分别给依据 |
-| 什么时候停 | 聊到没话 | **STOP CONDITION**：边际信息价值下降时主动收束到 SEARCH / EXPERIMENT / ACT / STOP |
-| 是否会迎合你 | 常见 | **ANTI-SYCOPHANCY**：默认先找最强反方、最强反例、被忽略变量，然后才看支持证据 |
-
----
-
-## 核心流程
-
-```
-问题
- ↓
-重新定义问题 → 发现遗漏 → 扩大可能性 → 寻找最强反方 → 验证证据
- ↓
-淘汰弱解释 → 压缩关键变量 → 形成当前判断 → 校准信任 → 寻找行动阈值
- ↓
-行动 / 停止 / 等待新信息
+```text
+roundtable-seminar/
+├── SKILL.md                         运行入口与唯一全局 Router
+├── references/
+│   ├── brainstorm-engine.md         扩展候选空间
+│   ├── deliberation-engine.md       Dialectic ↔ Reasoning
+│   ├── protocols.md                 按触发条件读取的工具箱
+│   └── examples.md                  行为回归案例
+├── legacy/
+│   ├── v3.0/Roundtable-Seminar-v3.0.md
+│   ├── v3.1/Roundtable-Seminar-v3.1.md
+│   └── v3.2/Roundtable-Seminar-v3.2.md
+├── review/
+│   ├── baseline/                    对话中 Kernel / Brainstorm RC 原文
+│   ├── red-team-baseline.md          已接受的原架构审查记录
+│   ├── consistency-check.md          本次检查及修订说明
+│   ├── forward-check.md              独立前向检查记录
+│   └── checks.json                   文件完整性与来源校验结果
+└── README.md
 ```
 
----
+## 使用
 
-## 怎么用
+将 `SKILL.md` 与整个 `references/` 目录作为一个技能包提供给支持技能的宿主，从 `SKILL.md` 进入。只按当前需要加载对应参考文件。项目已整理为可交付文件，本次没有自动安装或修改全局技能配置。
 
-### 触发
+`legacy/`、`review/` 和本 README 属于项目资料，不是运行指令；部署运行包时只包含根 `SKILL.md` 与 `references/`，不要把历史版本与当前版本同时加载。
 
-直接说其中任意一句：
+可以用“圆桌：……”开始；“可 / 继续”“深挖”“查证”“落地”“止”等控制语义由 Kernel 定义。不要求每个问题都出现多人讨论或完整报告。
 
-```
-圆桌：要不要把房子卖了换成指数基金？
-开始圆桌
-按圆桌分析一下这个方案
-```
+如果旧版 v3.1 仍放在宿主的项目指令中，仅加载新技能并不能保证旧规则失效。迁移时应明确替换旧版运行指令，保留其归档即可。本次未改动现有项目 `AGENTS.md` 或任何同步参考材料。
 
-进入后 `ROUND_TABLE_MODE = ON`，后续追问、加条件、质疑结论都不会自动退出。
+## 文件职责
 
-### 过程中的指令
-
-| 指令 | 作用 |
+| 唯一规则归属 | 内容 |
 |---|---|
-| `可` / `继续` | 沿当前最重要的未解决问题继续（读取 STATE，不重新开始） |
-| `深挖` | 不扩张新议题，继续攻击当前核心裂缝 |
-| `引入 XXX` | 邀请指定人物或认知角色加入 |
-| `换人` | 重新评估阵容，替换低贡献席位 |
-| `查证` | 暂停推演，优先验证最可能改变结论的事实 |
-| `落地` | 停止扩张讨论，进入现实行动设计（Plan A / Plan B / 切换条件 / 下一步 1–3 个动作） |
-| `止` | 结束圆桌，生成最终知识网络 |
+| [SKILL.md](SKILL.md) | 模式、用户命令、Need Router、State、可逆行动偏置、停止、自适应输出 |
+| [Brainstorm](references/brainstorm-engine.md) | 独立生成、机制聚类、按缺口升级、饱和退出 |
+| [Deliberation](references/deliberation-engine.md) | Dialectic / Reasoning 的内部处理、动态交锋、真人真实性 |
+| [Protocols](references/protocols.md) | Evidence、Ledger、Red Team 等协议的触发、细则、返回和停止 |
+| [Examples](references/examples.md) | 条件变化下应观察到的行为；不另建 Router |
 
-自然语言也可以，不要求用命令。
+核心原则仍是 Direct Path First、Light by Default、Minimum Necessary Cognitive Complexity，以及 ACT / EXPERIMENT under reversibility。它们在 Kernel 定义，其他文件遵循该定义。
 
-### 每轮你会拿到什么
+## RC 合并范围
 
-```
-核心裂缝 / 隐藏前提 / 被削弱或淘汰的解释 / 新增关键变量
-推理分叉（有效时）/ ASCII 思考模型（必要时）
-当前判断：倾向 + 认识置信度 + 行动置信度
-Belief Update：↑ ↓ ≈ ?
-下一步最高信息价值动作：THINK / SEARCH / ASK / CALCULATE / EXPERIMENT / OBSERVE / ACT / STOP
-```
+- 删除独立 Hybrid Mode，混合问题通过 Kernel 在 Dialectic、Reasoning 与直接操作之间切换。
+- Claim Ledger 移至 Protocols，只有实际追踪负担加高阈值信号才考虑；普通 State 足够时不建表。
+- Red Team 按共识加风险因子触发；显式审查请求按范围执行。
+- Evidence 的 [C] 统一为合理推演；来源类型不被当作自动可信度排名。
+- 移除全局阶梯和固定深度全流程，使 Search / Calculate / Experiment / Act 可以直接成为第一步。
+- Kernel、Brainstorm 原文另有快照；运行稿仅作格式兼容、重复规则归位、路由边界与退出条件修补，未增加认知机制。
 
----
+详细差异与验证范围见 [一致性检查](review/consistency-check.md)。
 
-## 文件结构
+## 验证与限制
 
-```
-SKILL.md                                # v3.2 主框架：第 0–39 节完整规范
-references/v3.0-panel-and-modes.md      # v3.0 人物库（含 MBTI）、快速研讨模式、org 持久化
-references/deployment.md                # 部署指南：脱离 Hermes 独立运行
-```
+本 RC 包含静态格式/链接/归档完整性检查、案例走查，以及一次独立前向检查。案例集并不表示已用真实用户、真实平台或重复模型运行验证效果。它仍是 Release Candidate，后续应依据实际使用中出现的误路由做窄修订。
 
----
-
-## 安装
-
-```bash
-npx skills add Condiwus/roundtable-seminar
-```
-
-手动使用也行：把 `SKILL.md` 的内容作为 system prompt 喂给任意兼容的模型即可。
-
----
-
-## 版本历史
-
-- **v3.2** — 升级为通用认知操作系统：PROBLEM ROUTER、SUCCESS FUNCTION、COGNITIVE SEATS、CLAIM LEDGER、RED TEAM PROTOCOL、CONVERGENCE ENGINE、INFORMATION GAIN ROUTER、TRUST CALIBRATION、JUDGMENT AUTHORITY、DECISION THRESHOLD、STOP CONDITION、ANTI-PERFORMANCE、ANTI-SYCOPHANCY。
-- **v3.0** (2026-05-23) — 融合李继刚原版 `ljg-roundtable` 精华：动态发言顺序、行动标签（陈述/质疑/补充/反驳/修正/综合）、MBTI 标注、「意外视角」强制要求、org 文件自动持久化。
-- **v2.1** (2026-05-15) — 新增「落地」指令与自动转型规则。
-- **v1.1** (2026-05-15) — 退出质量门控、快速研讨模式。
-- **v1.0** (2026-05-15) — 基于 Lisp 规范创建。
-
----
-
-## 致谢
-
-- **李继刚** 的 [`ljg-roundtable`](https://github.com/lijigang/ljg-roundtable) — v3.0 的融合来源，v3.2 在问题路由与证据纪律上继续推进。
-
-## License
-
-MIT
+来源对话：[优化圆桌提示词](chatgpt-conversation://6aab7232-64fc-83ea-9d5a-50ddece4de2b)。历史附件按原始字节保存，完整性结果见 [checks.json](review/checks.json)。
